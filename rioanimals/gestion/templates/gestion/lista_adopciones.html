@@ -1,0 +1,19 @@
+{% extends 'gestion/base.html' %}
+
+{% block title %}Lista de Adopciones - RioAnimals{% endblock %}
+
+{% block content %}
+<h1>🏠 Lista de Adopciones</h1>
+
+{% for adopcion in adopciones %}
+<div class="card">
+    <h2>Adopción #{{ adopcion.adon_id }}</h2>
+    <p><strong>Animal:</strong> {{ adopcion.anim.anim_nombre }} ({{ adopcion.anim.anim_especie }})</p>
+    <p><strong>Adoptante:</strong> {{ adopcion.adop.adop_nombre }}</p>
+    <p><strong>Voluntario responsable:</strong> {{ adopcion.volu.volu_nombre }}</p>
+    <p><strong>Fecha de adopción:</strong> {{ adopcion.adon_fecha_adopcion }}</p>
+</div>
+{% empty %}
+<p>No hay adopciones registradas.</p>
+{% endfor %}
+{% endblock %}

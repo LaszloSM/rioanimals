@@ -1,0 +1,20 @@
+{% extends 'gestion/base.html' %}
+
+{% block title %}Lista de Voluntarios - RioAnimals{% endblock %}
+
+{% block content %}
+<h1>🙋 Lista de Voluntarios</h1>
+
+{% for voluntario in voluntarios %}
+<div class="card">
+    <h2>{{ voluntario.volu_nombre }}</h2>
+    <p><strong>Documento:</strong> {{ voluntario.volu_documento }}</p>
+    <p><strong>Teléfono:</strong> {{ voluntario.volu_telefono }}</p>
+    <p><strong>Correo:</strong> {{ voluntario.volu_correo }}</p>
+    <p><strong>Tipo de documento ID:</strong> {{ voluntario.tipos_documento_id }}</p>
+    <p><strong>Sexo ID:</strong> {{ voluntario.tipos_sexo_id }}</p>
+</div>
+{% empty %}
+<p>No hay voluntarios registrados.</p>
+{% endfor %}
+{% endblock %}

@@ -1,0 +1,35 @@
+{% extends 'gestion/base.html' %}
+
+{% block title %}{{ animal.anim_nombre }} - RioAnimals{% endblock %}
+
+{% block content %}
+<h1>Detalles de {{ animal.anim_nombre }}</h1>
+
+<div class="card">
+    <h2>Información General</h2>
+    <p><strong>ID:</strong> {{ animal.anim_id }}</p>
+    <p><strong>Nombre:</strong> {{ animal.anim_nombre }}</p>
+    <p><strong>Especie:</strong> {{ animal.anim_especie }}</p>
+    <p><strong>Sexo:</strong> {{ animal.anim_sexo }}</p>
+    <p><strong>Edad:</strong> {{ animal.anim_edad }} años</p>
+    <p><strong>Peso:</strong> {{ animal.anim_peso }} kg</p>
+    <p><strong>Fecha de ingreso:</strong> {{ animal.anim_fecha_ingreso }}</p>
+    <p><strong>Tipo de ingreso ID:</strong> {{ animal.tipos_ingreso_id }}</p>
+    <p><strong>Estado ID:</strong> {{ animal.tipos_estado_id }}</p>
+</div>
+
+<div class="card">
+    <h2>📋 Historial Médico</h2>
+    {% for registro in historial %}
+    <div style="border-left: 3px solid #3498db; padding-left: 1rem; margin: 1rem 0;">
+        <p><strong>Fecha:</strong> {{ registro.hime_fecha }}</p>
+        <p><strong>Tipo de atención ID:</strong> {{ registro.tipos_atencion_id }}</p>
+        <p><strong>Descripción:</strong> {{ registro.hime_descripcion }}</p>
+    </div>
+    {% empty %}
+    <p>No hay registros médicos para este animal.</p>
+    {% endfor %}
+</div>
+
+<a href="{% url 'gestion:lista_animales' %}" class="btn">← Volver a la lista</a>
+{% endblock %}

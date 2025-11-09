@@ -1,0 +1,21 @@
+{% extends 'gestion/base.html' %}
+
+{% block title %}Lista de Animales - RioAnimals{% endblock %}
+
+{% block content %}
+<h1>🐾 Lista de Animales</h1>
+
+{% for animal in animales %}
+<div class="card">
+    <h2>{{ animal.anim_nombre }}</h2>
+    <p><strong>Especie:</strong> {{ animal.anim_especie }}</p>
+    <p><strong>Sexo:</strong> {{ animal.anim_sexo }}</p>
+    <p><strong>Edad:</strong> {{ animal.anim_edad }} años</p>
+    <p><strong>Peso:</strong> {{ animal.anim_peso }} kg</p>
+    <p><strong>Fecha de ingreso:</strong> {{ animal.anim_fecha_ingreso }}</p>
+    <a href="{% url 'gestion:detalle_animal' animal.anim_id %}" class="btn">Ver detalles</a>
+</div>
+{% empty %}
+<p>No hay animales registrados.</p>
+{% endfor %}
+{% endblock %}

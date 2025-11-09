@@ -1,0 +1,20 @@
+{% extends 'gestion/base.html' %}
+
+{% block title %}Lista de Adoptantes - RioAnimals{% endblock %}
+
+{% block content %}
+<h1>👥 Lista de Adoptantes</h1>
+
+{% for adoptante in adoptantes %}
+<div class="card">
+    <h2>{{ adoptante.adop_nombre }}</h2>
+    <p><strong>Documento:</strong> {{ adoptante.adop_documento }}</p>
+    <p><strong>Teléfono:</strong> {{ adoptante.adop_telefono }}</p>
+    <p><strong>Correo:</strong> {{ adoptante.adop_correo }}</p>
+    <p><strong>Tipo de documento ID:</strong> {{ adoptante.tipos_documento_id }}</p>
+    <p><strong>Sexo ID:</strong> {{ adoptante.tipos_sexo_id }}</p>
+</div>
+{% empty %}
+<p>No hay adoptantes registrados.</p>
+{% endfor %}
+{% endblock %}
