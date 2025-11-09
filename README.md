@@ -13,7 +13,7 @@ Sistema web desarrollado en Django para gestionar un refugio de animales, incluy
 ### 1. Clonar el repositorio
 
 ```bash
-git clone https://github.com/TU_USUARIO/rioanimals.git
+git clone https://github.com/LaszloSM/rioanimals.git
 cd rioanimals
 ```
 
@@ -37,13 +37,27 @@ pip install -r requirements.txt
 
 ### 4. Configurar la base de datos MySQL
 
-Crea la base de datos en MySQL:
+#### Crear la base de datos en MySQL:
 
 ```sql
 CREATE DATABASE rioanimals CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+EXIT;
 ```
 
-Importa tu esquema de base de datos existente o crea las tablas necesarias.
+#### Importar el backup de la base de datos:
+
+El repositorio incluye un archivo `rioanimals_backup.sql` con todos los datos y estructura de las tablas.
+
+```bash
+# En Windows (PowerShell)
+# Si mysqldump no está en PATH, usa la ruta completa:
+& "C:\Program Files\MySQL\MySQL Server 8.0\bin\mysql.exe" -u root -p rioanimals < rioanimals_backup.sql
+
+# En Linux/Mac
+mysql -u root -p rioanimals < rioanimals_backup.sql
+```
+
+Ingresa tu contraseña de MySQL cuando te la pida.
 
 ### 5. Configurar variables de entorno
 
@@ -65,18 +79,28 @@ DB_USER=root
 DB_PASSWORD=tu_contraseña
 DB_HOST=localhost
 DB_PORT=3306
-SECRET_KEY=tu_secret_key_django
+SECRET_KEY=django-insecure-&f(&h9*^^6f#p130bqt#7h+%*kt&jkk29(-cm1u@2sz9$4d+=)
 DEBUG=True
 ```
 
-### 6. Ejecutar el servidor
+### 6. Crear un superusuario (para acceder al admin)
 
 ```bash
 cd rioanimals
+python manage.py createsuperuser
+```
+
+Sigue las instrucciones para crear tu usuario administrador.
+
+### 7. Ejecutar el servidor
+
+```bash
 python manage.py runserver
 ```
 
-Abre tu navegador en: `http://127.0.0.1:8000/`
+Abre tu navegador en:
+- **Sitio web:** `http://127.0.0.1:8000/`
+- **Panel de administración:** `http://127.0.0.1:8000/admin/`
 
 ## 📁 Estructura del Proyecto
 
@@ -144,4 +168,4 @@ Este proyecto es de código abierto.
 
 ## 👥 Autor
 
-Tu Nombre - [@tu_usuario](https://github.com/tu_usuario)
+LaszloSM - [@LaszloSM](https://github.com/LaszloSM)
